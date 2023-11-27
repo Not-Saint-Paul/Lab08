@@ -1,76 +1,105 @@
-/**************************************
- * Автор: Станковский П.А.            *
- * Дата: 19.11.2023                   *
- * Название: Shitcode Lab8 v1 Release *
- * https://onlinegdb.com/hiz845-wq    *
- **************************************/
+/***********************************************
+ * Автор: Станковский П.А.                     *
+ * Дата: 19.11.2023                            *
+ * Название: Shitcode Lab8 v1.1 Fifth Day Path *
+ * https://onlinegdb.com/wcXolfNOHp            *
+ **********************************************/
 
 #include <iostream>
+#include <string>
 
 using namespace std;
 
-int main()
-{
-    int number;
+string Ar2Rom(int numAr) {
 
-    cout << "Введите число: ";
-    cin >> number;
-    cout << "Результат: ";
-
-    while (number > 1 ) {
-        while (number / 1000 >= 1) {
-            cout << 'M';
-            number -= 1000;
+    string numRom;
+    
+    while (numAr > 1 ) {        
+        while (numAr / 1000 >= 1) {
+            numRom += "M";
+            numAr -= 1000;
         }
-        while (number / 900 >= 1) {
-            cout << "CM";
-            number -= 900;
+        while (numAr / 900 >= 1) {
+            numRom += "CM";
+            numAr -= 900;
         }
-        while (number / 500 >= 1) {
-            cout << 'D';
-            number -= 500;
+        while (numAr / 500 >= 1) {
+            numRom += "D";
+            numAr -= 500;
         } 
-        while (number / 400 >= 1) {
-            cout << "CD";
-            number -= 400;
+        while (numAr / 400 >= 1) {
+            numRom += "CD";
+            numAr -= 400;
         }
-        while (number / 100 >= 1) {
-            cout << 'C';
-            number -= 100;
+        while (numAr / 100 >= 1) {
+            numRom += "C";
+            numAr -= 100;
         }
-        while (number / 90 >= 1) {
-            cout << "XC";
-            number -= 90;
+        while (numAr / 90 >= 1) {
+            numRom += "XC";
+            numAr -= 90;
         }
-        while (number / 50 >= 1) {
-            cout << 'L';
-            number -= 50;
+        while (numAr / 50 >= 1) {
+            numRom += "L";
+            numAr -= 50;
         }
-        while (number / 40 >= 1) {
-            cout << "XL";
-            number -= 40;
+        while (numAr / 40 >= 1) {
+            numRom += "XL";
+            numAr -= 40;
         }
-        while (number / 10 >= 1) {
-            cout << 'X';
-            number -= 10;
+        while (numAr / 10 >= 1) {
+            numRom += "X";
+            numAr -= 10;
         }
-        while (number / 9 >= 1) {
-            cout << "IX";
-            number -= 9;
+        while (numAr / 9 >= 1) {
+            numRom += "IX";
+            numAr -= 9;
         }
-        while (number / 5 >= 1) {
-            cout << 'V';
-            number -= 5;
+        while (numAr / 5 >= 1) {
+            numRom += "V";
+            numAr -= 5;
         }
-        while (number / 4 >= 1) {
-            cout << "IV";
-            number -= 4;
+        while (numAr / 4 >= 1) {
+            numRom += "IV";
+            numAr -= 4;
         }
-        while (number / 1 >= 1) {
-            cout << 'I';
-            --number;
+        while (numAr / 1 >= 1) {
+            numRom += "I";
+            --numAr;
         }
     }
 
+    return numRom;
+}
+
+int main() {
+    
+    int prog, numAr;
+    string result, numRom;
+    
+    cout << "Выберите режим перевода числа: \n[1] - Арабское -> Римское; [2] Римское - Арабское\n";
+    cin >> prog;
+    system("clear");
+    if (prog == 1) {
+        cout << "Введите число: ";
+        cin >> numAr;
+        system("clear");
+        if (numAr <= 0) {
+            cout << "Неверный ввод";
+            return -1;
+        }
+        result = Ar2Rom(numAr);
+        cout << "Результат: " << result;
+    } else if (prog == 2) {
+        cout << "Введите число: ";
+        cin >> numRom;
+        system("clear");
+        //result = Rom2Ar(numRom);
+        cout << "Результат: " << result;
+    } else {
+        cout << "Неверный ввод";
+        return -1;
+    }
+    
     return 0;
 }
